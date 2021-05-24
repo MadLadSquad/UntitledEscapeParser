@@ -35,3 +35,5 @@ cmake-build-release/
 build/
 main.cpp
 CMakeLists.txt
+.idea/
+.vs/
