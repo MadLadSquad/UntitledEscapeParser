@@ -14,4 +14,9 @@ A unix escape sequence parser written in C++
 - Font sequence parsing ✅
 - Support for most text appearance attributes ✅
 - Cursor movement support 
-- 
+- Text erasing support
+- Character strings support
+- Screen modes
+- Private modes
+## Learning
+In the [wiki](https://github.com/MadLadSquad/UntitledEscapeParser/wiki)
