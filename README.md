@@ -1,4 +1,6 @@
 # UntitledEscapeParser
+> Currently in active early development! Expect direct pushes to master, missing features and bugs!
+
 A unix escape sequence parser written in C++
 ## Features
 - \n ✅
