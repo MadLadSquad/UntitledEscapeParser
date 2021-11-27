@@ -23,11 +23,11 @@ namespace UEP
         Parser(std::string& string, ParserInfo  parserInfo);
     private:
         void parse(std::string& string);
-        void parseColourSequence(const std::string& accumulatedString, std::string& sequence, std::string& buffer, size_t& index);
+        void checkSequenceType(const std::string& accumulatedString, std::string& sequence, std::string& buffer, size_t& index);
 
         // The current text colour and attribute structure
         UEPColourSequence currentColour{};
         // The current info struct
-        const ParserInfo info;
+        ParserInfo info;
     };
 }

@@ -4,6 +4,6 @@
 
 namespace UEP
 {
-    UEP::UEPTrueColourF colourToFloat(const UEPTrueColour& colour);
-    void removeSingleCharacterSequence(std::string& base, size_t& index, std::string& str, bool& accumulating);
+    [[maybe_unused]] UEP::UEPTrueColourF colourToFloat(const UEPTrueColour& colour);
+    void removeSingleCharacterSequence(size_t& index, std::string& str, bool& accumulating);
 }

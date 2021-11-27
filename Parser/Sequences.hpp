@@ -97,7 +97,7 @@ namespace Sequences
 
         constexpr unsigned char ResetBold = 21;
         constexpr unsigned char ResetDim = 22;
-        constexpr unsigned char ResetItalic = 23;      // Not widely supported
+        constexpr unsigned char ResetItalic = 23;                       // Not widely supported
         [[maybe_unused]] constexpr unsigned char ResetFraktur = 23;     // Not widely supported
         constexpr unsigned char ResetUnderlined = 24;
         constexpr unsigned char ResetBlink = 25;
@@ -105,6 +105,50 @@ namespace Sequences
         [[maybe_unused]] constexpr unsigned char ResetInvert = 27;
         constexpr unsigned char ResetHidden = 28;
         [[maybe_unused]] constexpr unsigned char ResetPassword = 28;
-        constexpr unsigned char ResetCrossedOut = 29;  // Not widely supported
+        constexpr unsigned char ResetCrossedOut = 29;                   // Not widely supported
+    }
+    namespace EraseTypes
+    {
+        constexpr unsigned char EraseType1 = 'J';
+        constexpr unsigned char EraseType2 = 'K';
+    }
+    namespace CursorMovement
+    {
+        constexpr unsigned char CursorH = 'H';
+        constexpr unsigned char Cursorf = 'f';
+        constexpr unsigned char CursorA = 'A';
+        constexpr unsigned char CursorB = 'B';
+        constexpr unsigned char CursorC = 'C';
+        constexpr unsigned char CursorD = 'D';
+        constexpr unsigned char CursorE = 'E';
+        constexpr unsigned char CursorF = 'F';
+        constexpr unsigned char CursorG = 'G';
+        constexpr unsigned char Cursorn = 'n';
+        constexpr unsigned char Cursors = 's';
+        constexpr unsigned char Cursoru = 'u';
+    }
+    namespace ScreenModes
+    {
+        constexpr unsigned char ScreenModeTerminator = 'h';
+        constexpr unsigned char ScreenModeTerminatorReset = 'l';
+        constexpr unsigned char ScreenMode0 = 0;                    // 40 x 25 monochrome (text)
+        constexpr unsigned char ScreenMode1 = 1;                    // 40 x 25 color (text)
+        constexpr unsigned char ScreenMode2 = 2;                    // 80 x 25 monochrome (text)
+        constexpr unsigned char ScreenMode3 = 3;                    // 80 x 25 color (text)
+        constexpr unsigned char ScreenMode4 = 4;                    // 320 x 200 4-color (graphics)
+        constexpr unsigned char ScreenMode5 = 5;                    // 320 x 200 monochrome (graphics)
+        constexpr unsigned char ScreenMode6 = 6;                    // 640 x 200 monochrome (graphics)
+        constexpr unsigned char ScreenMode7 = 7;                    // Enables line wrapping
+        constexpr unsigned char ScreenMode13 = 13;                  // 320 x 200 color (graphics)
+        constexpr unsigned char ScreenMode14 = 14;                  // 640 x 200 color (16-color graphics)
+        constexpr unsigned char ScreenMode15 = 15;                  // 640 x 350 monochrome (2-color graphics)
+        constexpr unsigned char ScreenMode16 = 16;                  // 640 x 350 color (16-color graphics)
+        constexpr unsigned char ScreenMode17 = 17;                  // 640 x 480 monochrome (2-color graphics)
+        constexpr unsigned char ScreenMode18 = 18;                  // 640 x 480 color (16-color graphics)
+        constexpr unsigned char ScreenMode19 = 19;                  // 320 x 200 color (256-color graphics)
+
+        constexpr unsigned char PrivateModeCursor = 25;             // Enabled/Disabled depending on the terminator
+        constexpr unsigned char PrivateModeScreen = 47;             // Enabled/Disabled depending on the terminator
+        constexpr unsigned char PrivateModeAlternativeBuffer = 255; // Actual value here is 1049 but to be economical we're going to keep 255 and multiply by 4 then add 49 to get the right number
     }
 }
