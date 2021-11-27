@@ -23,14 +23,14 @@ namespace UEP
 
     struct ParserInfo
     {
-        std::function<void(const std::string&)> newline;
-        std::function<void(const std::string&)> bell;
-        std::function<void(const std::string&)> backspace;
-        std::function<void(const std::string&)> tab;
-        std::function<void(const std::string&)> formFeed;
-        std::function<void(const std::string&)> carriageReturn;
-        std::function<void(const std::string&)> verticalTab;
-        std::function<void(const std::string&, const UEPColourSequence&)> colour;
+        std::function<void(const std::string&)> newline = [](const std::string&){};
+        std::function<void(const std::string&)> bell = [](const std::string&){};
+        std::function<void(const std::string&)> backspace = [](const std::string&){};
+        std::function<void(const std::string&)> tab = [](const std::string&){};
+        std::function<void(const std::string&)> formFeed = [](const std::string&){};
+        std::function<void(const std::string&)> carriageReturn = [](const std::string&){};
+        std::function<void(const std::string&)> verticalTab = [](const std::string&){};
+        std::function<void(const std::string&, const UEPColourSequence&)> colour = [](const std::string&, const UEPColourSequence&){};
 
         UEPTrueColour black = { 0, 0, 0, 255 };
         UEPTrueColour white = { 255, 255, 255, 255 };
@@ -315,17 +315,14 @@ namespace UEP
 
     struct UEPColourSequence
     {
+        UEPColourSequence()
+        {
+            for (auto& a : attributes)
+                a = false;
+        }
         UEPTrueColour foregroundColour = { 255, 255, 255, 255 };
         UEPTrueColour backgroundColour = { 0, 0, 0, 0 };
         bool attributes[66]{};
         uint8_t currentFont = 0;
-    };
-
-    enum class ColourType
-    {
-        COLOUR_TYPE_256,
-        COLOUR_TYPE_STANDARD,
-        COLOUR_TYPE_TRUE_COLOUR,
-        COLOUR_TYPE_ATTRIBUTE_ONLY,
     };
 }
