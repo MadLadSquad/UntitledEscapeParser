@@ -148,6 +148,7 @@ void UEP::Attributes::checkAttribute(const uint8_t& num, ParserInfo& info, UEPCo
         currentColour.foregroundColour = info.lightblue;
         break;
     case Sequences::Colours::Foreground::LightMagenta:
+        currentColour.foregroundColour = info.lightmagenta;
         break;
     case Sequences::Colours::Foreground::LightCyan:
         currentColour.foregroundColour = info.lightcyan;
@@ -232,6 +233,15 @@ void UEP::Attributes::checkAttribute(const uint8_t& num, ParserInfo& info, UEPCo
         break;
     case Sequences::Attributes::AlternativeFont9:
         currentColour.currentFont = 9;
+        break;
+    case Sequences::Colours::Foreground::DefaultUnderlinedColour:
+        currentColour.underlinedColour = info.white;
+        break;
+    case Sequences::Attributes::ProportionalSpacing:
+        currentColour.attributes[Sequences::Attributes::ProportionalSpacing] = true;
+        break;
+    case Sequences::Attributes::DisableProportionalSpacing:
+        currentColour.attributes[Sequences::Attributes::ProportionalSpacing] = false;
         break;
     default:
         break;

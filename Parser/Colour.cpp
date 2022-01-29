@@ -12,30 +12,41 @@ void UEP::Colour::parseColourSequence(const std::string& accumulatedString, std:
         // 256 foreground colour
         if (numbers[i] == Sequences::ColourSeparators::Define256Colour && i > 0 && (i + 1) < numbers.size() && numbers[i - 1] == Sequences::ColourSeparators::Foreground)
         {
-            currentColour.foregroundColour = ParserInfo::colours256[numbers[i + 1]];
+            currentColour.foregroundColour = UEP_COLOUR_ACCESS[numbers[i + 1]];
             i++;
         }
         else if (numbers[i] == Sequences::ColourSeparators::Define256Colour && i > 0 && (i + 1) < numbers.size() && numbers[i - 1] == Sequences::ColourSeparators::Background) // 256 background colour
         {
-            currentColour.backgroundColour = ParserInfo::colours256[numbers[i + 1]];
+            currentColour.backgroundColour = UEP_COLOUR_ACCESS[numbers[i + 1]];
             i++;
         }
-        else if (numbers[i] == Sequences::ColourSeparators::Define256Colour && (i == 0 || (numbers[i - 1] == Sequences::ColourSeparators::Foreground || numbers[i - 1] == Sequences::ColourSeparators::Background))) // Blink attribute
-            currentColour.attributes[Sequences::Attributes::Blink] = true;
+        else if (numbers[i] == Sequences::ColourSeparators::Define256Colour && i > 0 && (i + 1) < numbers.size() && numbers[i - 1] == Sequences::ColourSeparators::UnderlineColour) // 256 underlined colour
+        {
+            currentColour.underlinedColour = UEP_COLOUR_ACCESS[numbers[i + 1]];
+            i++;
+        }
         else if (numbers[i] == Sequences::ColourSeparators::DefineTrueColour && i > 0 && (i + 3) < numbers.size() && numbers[i - 1] == Sequences::ColourSeparators::Foreground) // TrueColour foreground colour
         {
             currentColour.foregroundColour = { numbers[i + 1], numbers[i + 2], numbers[i + 3], 255 };
             i += 3;
         }
-        else if (numbers[i] == Sequences::ColourSeparators::DefineTrueColour && i > 0 && (i + 3) < numbers.size() && numbers[i - 1] == Sequences::ColourSeparators::Background) // TrueColour foreground colour
+        else if (numbers[i] == Sequences::ColourSeparators::DefineTrueColour && i > 0 && (i + 3) < numbers.size() && numbers[i - 1] == Sequences::ColourSeparators::Background) // TrueColour background colour
         {
             currentColour.backgroundColour = { numbers[i + 1], numbers[i + 2], numbers[i + 3], 255 };
             i += 3;
         }
-        else if (numbers[i] == Sequences::ColourSeparators::DefineTrueColour && (i == 0 || (numbers[i - 1] == Sequences::ColourSeparators::Foreground || numbers[i - 1] == Sequences::ColourSeparators::Background)))
+        else if (numbers[i] == Sequences::ColourSeparators::DefineTrueColour && i > 0 && (i + 3) < numbers.size() && numbers[i - 1] == Sequences::ColourSeparators::UnderlineColour) // TrueColour underline colour
+        {
+            currentColour.underlinedColour = { numbers[i + 1], numbers[i + 2], numbers[i + 3], 255 };
+            i += 3;
+        }
+        else if (numbers[i] == Sequences::ColourSeparators::Define256Colour && (i == 0 || !(numbers[i - 1] == Sequences::ColourSeparators::Foreground || numbers[i - 1] == Sequences::ColourSeparators::Background || numbers[i - 1] == Sequences::ColourSeparators::UnderlineColour))) // Blink attribute
+            currentColour.attributes[Sequences::Attributes::Blink] = true;
+        else if (numbers[i] == Sequences::ColourSeparators::DefineTrueColour && (i == 0 || !(numbers[i - 1] == Sequences::ColourSeparators::Foreground || numbers[i - 1] == Sequences::ColourSeparators::Background || numbers[i - 1] == Sequences::ColourSeparators::UnderlineColour)))
             currentColour.attributes[Sequences::Attributes::Dim] = true;
-        else if (i == 0 || (numbers[i - 1] == Sequences::ColourSeparators::Foreground || numbers[i - 1] == Sequences::ColourSeparators::Background))
+        else if (i == 0 || !(numbers[i - 1] == Sequences::ColourSeparators::Foreground || numbers[i - 1] == Sequences::ColourSeparators::Background))
             Attributes::checkAttribute(numbers[i], info, currentColour);
+
     }
     info.colour(accumulatedString, currentColour);
 }

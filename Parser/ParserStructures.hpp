@@ -52,7 +52,11 @@ namespace UEP
         UEPTrueColour grey = { 64, 64, 64, 255 };
 
         // A table detailing all of those values can be found here https://www.4e00.com/tools/xterm-256-colors.html
-        static constexpr const UEPTrueColour colours256[256] =
+
+#ifndef UEP_CUSTOM_256
+        static constexpr const
+#endif
+        UEPTrueColour colours256[256] =
         {
             { 0, 0, 0, 255 },           // Name: Black
             { 128, 0, 0, 255 },         // Name: Maroon
@@ -322,6 +326,7 @@ namespace UEP
         }
         UEPTrueColour foregroundColour = { 255, 255, 255, 255 };
         UEPTrueColour backgroundColour = { 0, 0, 0, 0 };
+        UEPTrueColour underlinedColour = { 255, 255, 255, 255 };
         bool attributes[66]{};
         uint8_t currentFont = 0;
     };

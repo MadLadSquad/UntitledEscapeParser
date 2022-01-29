@@ -6,6 +6,8 @@ namespace Sequences
     {
         namespace Foreground
         {
+            constexpr unsigned char DefaultUnderlinedColour = 59;
+
             constexpr unsigned char DefaultColour = 39;    // Standard terminal foreground colours
             constexpr unsigned char Black = 30;            // Standard terminal foreground colours
             constexpr unsigned char Red = 31;              // Standard terminal foreground colours
@@ -49,6 +51,7 @@ namespace Sequences
     {
         constexpr unsigned char Foreground = 38;
         constexpr unsigned char Background = 49;
+        constexpr unsigned char UnderlineColour = 58;
         constexpr unsigned char Define256Colour = 5;
         constexpr unsigned char DefineTrueColour = 2;
         constexpr unsigned char ColourEscapeEnd = 'm';
@@ -88,6 +91,7 @@ namespace Sequences
         constexpr unsigned char ResetFramedAndEncircled = 54;
         constexpr unsigned char ResetOverlined = 55;
 
+        constexpr unsigned char ProportionalSpacing = 26;
         constexpr unsigned char IdeogramUnderline = 60;        // Hardly ever supported
         constexpr unsigned char IdeogramDoubleUnderline = 61;  // Hardly ever supported
         constexpr unsigned char IdeogramOverline = 62;         // Hardly ever supported
@@ -101,6 +105,7 @@ namespace Sequences
         [[maybe_unused]] constexpr unsigned char ResetFraktur = 23;     // Not widely supported
         constexpr unsigned char ResetUnderlined = 24;
         constexpr unsigned char ResetBlink = 25;
+        constexpr unsigned char DisableProportionalSpacing = 50;
         constexpr unsigned char ResetReverse = 27;
         [[maybe_unused]] constexpr unsigned char ResetInvert = 27;
         constexpr unsigned char ResetHidden = 28;

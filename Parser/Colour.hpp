@@ -2,7 +2,13 @@
 #include "ParserStructures.hpp"
 #include "Attributes.hpp"
 
-#include <iostream>
+// If we're using custom 256 colours we use this macro to fix compiler errors since depending on the mode
+// it's either a normal or static member
+#ifdef UEP_CUSTOM_256
+    #define UEP_COLOUR_ACCESS ParserInfo.colours256
+#else
+    #define UEP_COLOUR_ACCESS ParserInfo::colours256
+#endif
 
 namespace UEP
 {
