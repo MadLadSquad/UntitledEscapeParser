@@ -24,5 +24,6 @@ A unix escape sequence parser written in C++
 - Character strings support
 - Screen modes
 - Private modes
+
 ## Learning
 In the [wiki](https://github.com/MadLadSquad/UntitledEscapeParser/wiki)
